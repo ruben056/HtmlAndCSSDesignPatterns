@@ -1,0 +1,18 @@
+*.border{
+	background-color:gold;
+	border:1px solid black;
+	padding:20px;
+	margin:20px;
+}
+
+*.abs{
+	position:absolute; left:0;right:0;
+	width:250px;
+	margin:auto;	
+	top:250px; /* to avoid having it over the static box */
+}
+
+*.static{
+	width:250px;
+	margin:auto;
+}

@@ -1,0 +1,27 @@
+*.decorate{
+	background-color:gold;
+	border:1px solid black;
+	padding:20px;
+}
+
+*.static{
+	position:static;
+}
+*.overlap{	
+	margin-top:-50px;
+}
+*.relative{
+	position:relative;
+}
+*.fixed{
+	position:fixed;
+	top:160px;
+}
+*.abs{
+	position:absolute;
+	top:40px;
+}
+*.inlinefloat{
+	float:left;
+	margin: 0 10px;
+}

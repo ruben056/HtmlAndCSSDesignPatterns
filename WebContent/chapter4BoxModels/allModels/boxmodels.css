@@ -1,0 +1,188 @@
+/* Box modeles */
+
+/*non relevant css stules*/
+.default{
+	background-color:grey;
+	border: 1px solid black;
+	
+}
+#pagewrapper{
+	position:relative; top:50px; /*don't start at the top...*/	
+}
+
+.container{
+	position:relative;
+}
+.container.border{
+	border:1px solid blue;
+}
+
+/*
+Inline box model:
+when: you want to style the box of an inline element
+flow: horizontally from left to right and are wrapped to newlines 
+		when they exceed the width of their closest terminal block ancestor (= inline formatting context)
+
+DO NOT WORK
+width, height and overflow do not work on inline elements because they always 
+shrinkwrap to fit the content!
+
+SPECIAL BEHAVIOR
+margin-top and bottom: IGNORED, in stead use line-height
+margin-left and right: +values places siblings further away, -values closer.
+
+vertical borders makes the content to the right of the border 
+move with with thickness of border (assuming the language is left-to-right)
+horizontal borders are rendered above and below the padding area and do NOT expand
+the line height! This makes that thick borders can overlap content of lines above 
+or below!
+
+Padding: same as borders (does not affect "height", bot does affect "widht")
+
+INLINE_SELECTOR { display:inline; visibility:VALUE;
+line-height:+VALUE;
+margin:±VALUE;
+padding:+VALUE;
+border:+WIDTH STYLE COLOR;
+background:VALUES; }
+*/
+
+*.inlinebox{
+	display:inline;
+}
+*.inlinebox.test{
+	background-color:gold;
+	padding:0px 100px;
+	border-left:1px solid black;
+	border-top:5px solid black;
+	border-bottom:5px solid black;
+	border-right:5px solid black;	
+}
+
+
+/*
+Bloxbox model:
+block boxes flow vertically (top to bottom). They can contain other block boxes, or
+inline boxes.
+A terminal block starts an inline formatting context inside its inner box, but occurs
+with a block formatting context outside its outer box
+
+Dimension: Can be stretched to the width and height of its parent or sized 
+smaller or larger. In the latter case the overflow property controls how the browsers
+handles the overflow
+width: "auto" is the defualt value = stretch to size of parent.
+height: "auto" is default value = shrinkwraps to element to the height of
+		 its containing blocks or lines
+horizontal margins: 
+ - stretched block: indent or outdent the sides.
+ - sized block : offset sides.
+ !!!CANNOT horizontally shrinkwrap a block box !!!
+
+TIP:horizontal alignment of sized block
+If you set the width smaller then the parent width, and set margin:auto;
+The blockbox is centered horizontally in the parent
+
+Vertical margins: +values add space between blocks, -values brings blocks closer.
+bottom and top of neighbouring blocks are collapsed by browser.
+automatically shrinkwraps vertically 
+
+SELECTOR { display:block; overflow:VALUE; visibility:VALUE;
+width: +VALUE; height: +VALUE;
+margin:±VALUE; padding:+VALUE;
+border:+WIDTH STYLE COLOR;
+background:VALUES; }
+
+*/
+.blockbox{
+	display:block; overflow:auto;
+}
+.blockbox.test{
+	border:1px solid black;
+	background-color:gold;
+	width:125px;
+	margin: 10px auto;
+}
+
+/*
+absolute box
+Removed from normal flow and put on layer above or below.
+- It can be sized, shrinkwrapped or stretched to its closest positioned ancestor
+- It does not affect position of othe boxes, they may overlap freely
+- z-index controls the overlapping order
+- left,right,top,border offsets to its parent container 
+(first relative posisioned parent container)
+when not set, position is similar to its normal flow position 
+(yet is on another layer)
+- width: sets the width, it can also be stretched using 
+margin:auto in combination with width
+special cases:
+width:auto;left:auto;right:auto; ==> shrinkwrapped
+width:auto;left:0;right:0; ==> stretched
+- height: works similar to width
+- margin: +value: moves border closes to center of container, -value opposite
+- border & padding: shrink the inner box
+
+PATTERN:
+SELECTOR { position:ABSOLUTE_FIXED; z-index:+VALUE;
+overflow:VALUE; visibility:VALUE;
+left:±VALUE; right:±VALUE; top:±VALUE; bottom:±VALUE;
+   width: +VALUE; height: +VALUE;
+  margin:±VALUE; padding:+VALUE;
+  border:+WIDTH STYLE COLOR; background:VALUES; }
+
+
+*/
+
+.absolutebox{
+	position:absolute;
+	overflow:auto; z-index:auto;
+	height:100px;margin:10px;padding:10px;
+	border:1px solid black;
+	background-color:gold;
+}
+.absolutebox.before{ /* positioned offset top and left */
+	left:400px;right:auto;
+	top:100px;bottom:auto;
+}
+.absolutebox.middle{ /* positioned offset top  and left */
+	left:0;right:auto;
+	top:0;bottom:auto;
+}
+.absolutebox.after{ /* positioned offset right and bottom */
+	left:auto;right:0px;
+	top:auto;bottom:50px;
+}
+
+/*floated box
+- removed from normal flow and placed above borders & backgrounds 
+	of adjacent blocks
+- if all children of box are floated, the parent is collapses completely(shrink)
+- it DOES INDENT adjencent content in the flow
+- positioned vertically where it would be if not floated.
+- a floats position, padding, border and margin affect position of adjecent inline content.
+- precise location cannot be given
+width: defaults to auto (shrinkwrap)
+height: defaults to auto (shrinkwrap)
+padding: expand outer size of float
+UNIQUE FEATURES:
+- margin:do NOT collapse, +values moves the float away from its point of alignment
+ 	-values pulls the float to the other side of that same point.
+
+SELECTOR { float:LEFT_RIGHT; width:+VALUE; height:+VALUE;
+z-index:+VALUE; margin:±VALUE; padding:+VALUE;
+border:+WIDTH STYLE COLOR; background:VALUES;
+overflow:VALUE; visibility:VALUE; }
+
+*/
+
+.floatedbox{
+	float:left; overflow:auto;
+	width:220px;height:100px;
+	padding:10px;
+	margin: 10px; 
+	border:1px solid black;
+	background-color: gold;
+}
+.floatedbox.around{
+	width:75px; height:auto;
+}

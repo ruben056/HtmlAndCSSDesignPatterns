@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../../site.css" media="all" type="text/css" />
+<link rel="stylesheet" href="../../normalize.css" media="all"
+	type="text/css" />
+<link rel="stylesheet" href="boxmodels.css" media="all" type="text/css" />
+<title>BoxModels per css class</title>
+
+</head>
+<body>
+	<!-- inline box example -->
+	<div id="pagewrapper">
+		<div class="container">
+			<h2>inline box</h2>
+			<span class="default">BEFORE</span> 
+			<span class="inlinebox test">this is an inlinebox dddd</span> 
+			<span class="default">AFTER</span>
+		</div>
+		
+		<div class="container">
+			<h2>block box</h2>
+			<div class="default">BEFORE</div> 
+			<div class="blockbox test">this is a block witch shrinkwraps 
+			vertically</div> 
+			<div class="default">AFTER</div>
+		</div>
+	</div>
+
+	<br/><br/><br/>
+	<br/><br/><br/>	
+	<div class="container border">
+		<h2>Absolute Box</h2>
+		<div class="default">BEFORE</div>
+		<div class="absolutebox before">ABSOLUTE BEFORE</div>
+		<div class="absolutebox middle">
+			absolute in middle
+		</div>
+		<div class="absolutebox after">ABSOLUTE AFTER</div>
+		<div class="default">AFTER</div>
+	</div>
+
+	<br/>
+	<div class="container">
+		<h2>floated box</h2>
+		<div class="default">BEFORE</div>
+		<div class="floatedbox around">FLOAT BEFORE</div>
+		<div class="floatedbox">
+			floated box
+		</div>
+		<div class="floatedbox around">FLOAT AFTER</div>
+		<div class="default">AFTER</div>
+	</div>
+</body>
+</html>
